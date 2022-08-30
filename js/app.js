@@ -30,6 +30,7 @@ const displayPhone = phones => {
         `
         allCard.appendChild(div);
     });
+    loadingSpinner(false);
 }
 
 document.getElementById('search-btn').addEventListener('click', function () {
@@ -37,6 +38,17 @@ document.getElementById('search-btn').addEventListener('click', function () {
     const searchText = searchField.value;
     searchField.value = '';
     loadPhoen(searchText);
+    loadingSpinner(true);
 });
+
+
+const loadingSpinner = isTrue => {
+    const isLoad = document.getElementById('spinner');
+    if (isTrue) {
+        isLoad.classList.remove('d-none');
+    } else {
+        isLoad.classList.add('d-none');
+    }
+}
 
 loadPhoen('iphone');
